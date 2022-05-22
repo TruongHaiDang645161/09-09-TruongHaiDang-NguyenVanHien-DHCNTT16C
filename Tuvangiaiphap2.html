@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Document</title>
+    <style>
+         .wrapper{
+            line-height: 1.5;
+            background-color: rgb(240,240,240);
+            width: 100%;
+            height: auto;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        header{
+            background-color: rgb(255,255,255);
+            width: 100%;
+            height: 65px;
+            display: flex;
+            justify-content:space-between;
+            align-items: center;
+        }
+        header a{
+            color: rgb(53, 105, 156);
+        }
+        nav{
+            background-color: rgb(53, 105, 156);    
+            width: 100%;
+            height: 40px;
+            display: flex;
+            justify-content:space-between;
+            justify-content:center;
+            font-size: 15px;
+            margin-top: 5px;
+        }
+        .section{
+            background-color: rgb(240,240,240);
+            width: 83%;
+            height: auto;
+            margin: auto;
+        }
+        .menu{
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .menu li a {
+            color:#f8f8f8;
+            font-weight: bold;
+            display: block;
+            padding:9px 30px;
+            text-decoration: none;
+        }
+        .menu li {
+            position: relative;
+            font-weight: bold;
+        }
+        .DMSP{
+            background-color:rgb(221,0,0);
+        }
+        .menu ul.submenu{
+            text-align: left;
+            position:absolute;
+            background-color:rgb(42, 113, 189);
+            padding-left: 0px;
+            list-style:none;
+            width: 200px;
+            display:none;
+        }
+        ul.menu li:hover ul.submenu{
+            display:block;
+        }
+        .menu ul.submenu a {
+            padding:5px 10px 10px 10px;
+            border-top: 1.5px solid white;
+            background-color: rgb(42, 113, 189);
+        }
+        .menu ul.submenu li:li :last-child a{
+            border: none;
+        }
+        .menu ul.submenu li:hover a {
+            border-bottom: rgb(57, 230, 22);
+            background-color: aqua;
+        }
+        .menu>li>a{
+            position: relative;
+        }
+        .menu>li>a:before{
+            content:"";
+            height:2px;
+            width: 0px;
+            background: white;
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            transition: 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+        .menu>li:hover>a:before{
+            width: 100%;
+        }
+        .menu>li.has-child::after{
+        font-family: "Font Awesome 5 Free"; 
+        font-weight: 900; 
+        content: "\f107";
+        color:rgba(255, 255, 255, 0.616);
+        position:absolute;
+        top: 0px;
+        right: 0px;
+        padding:18px 15px;
+        }
+        .header1{
+            color:blue;
+            font-size: 40px;
+            padding-right: 400px;
+            display:flex;
+        }
+        .header1 a { 
+            text-decoration: none; 
+            display: flex;
+        }
+        .container{
+            margin:0px auto;
+            max-width: 960px;
+        }
+        .div1{
+            margin:0px 10px;
+        }
+        .div1 a{
+            text-decoration:none;
+        }
+        .div1 a:hover{
+            color:rgb(22, 47, 137);
+        }
+        .div2{
+            padding-left: 100px;
+        }
+        .div2 a{
+            text-decoration:none;
+        }
+        .div2 a:hover{
+            color:rgb(22,47,137);
+        }
+        .div3{
+            padding: 0px;
+            padding-right: 150px;
+        }
+        .div3 a:hover{
+          background-color:rgb(22, 49, 137); 
+        }
+        .div4 a{
+            margin-right:100px;
+            text-decoration: none;
+        }
+        .box {
+            height:40px;
+            position:absolute;
+            left:35%;
+            background:#2f3640;
+            border-radius: 50px;
+            padding:5px;
+            margin-left: -120px;
+        }
+        .sbutton{
+            color:#e84118;
+            float:right;
+            width:40px;
+            height:40px;
+            border-radius: 50%;
+            background:#DADADA;
+            display: flex;
+            justify-content:center;
+            align-items:center;
+            text-decoration: none;
+            transition:3s;
+        }
+        .stext{
+            border:none;
+            background:none;
+            outline: none;
+            float:left;
+            padding: 0px;
+            color:white;
+            font-size:15px;
+            transition:1.5s;
+            line-height:40px;
+            width: 0px;
+        }
+        .sbox:hover > .stext{
+            width:200px;
+            padding: 0 5px;
+            border-radius: 50px;
+        }
+        .sbox:hover>.sbutton{
+            background:#fff;
+        }
+        .fa-search{
+            color: black;
+        }.sbutton{
+            color:#e84118;
+            float:right;
+            width:40px;
+            height:40px;
+            border-radius: 50%;
+            background:#DADADA;
+            display: flex;
+            justify-content:center;
+            align-items:center;
+            text-decoration: none;
+            transition:0.5s;
+        }
+        .stext{
+            border:none;
+            background:none;
+            outline: none;
+            float:left;
+            padding:0;
+            color:white;
+            font-size:15px;
+            transition:0.5s;
+            line-height:40px;
+            width:0px;
+        }
+        .sbox:hover > .stext{
+            width:200px;
+            padding: 0 5px;
+            border-radius: 50px;
+        }
+        .sbox:hover>.sbutton{
+            background:#fff;
+        }
+        .fa-search{
+            color: #001EFF;
+        }
+        footer{
+            width: 100%;
+            height: 500px;
+        }
+        .footer1{
+            width: 100%;
+            height: 400px;
+            background-color: rgb(247,247,247);
+            padding-top: 20px;
+            font-size: 15px;
+        }
+        .f1{
+            width: 30%;
+            height: 400px;
+            float: left;
+            padding-left: 9%;
+            padding-right: 1.5%;
+        }
+        .f2{
+            width: 15%;
+            height: 400px;
+            float: left;
+            padding-left: 2%;
+            padding-right: 1%;
+        }
+        .f3{
+            width: 25.5%;
+            height: 400px;
+            float: left;
+            padding-left: 7%;
+            padding-right: 9%;
+            line-height: 1.1;
+        }
+        .footer2{
+            background-color: rgb(222,222,222);
+            width: 80%;
+            height: 90px;
+            text-align: center;
+            padding-top:10px;
+            font-size: 11px;
+            padding-left: 10%;
+            padding-right: 10%;
+            color: gray;
+        }
+        .footer{
+            text-decoration: none;
+            color: rgb(51, 115, 181);
+            line-height: 2;
+        }
+        .scrollup {
+            width: 40px;
+            height: 40px;
+            opacity: 0.3;
+            position: fixed;
+            bottom: 50px;
+            right: 35px;
+            display: none;
+            background: url(https://megacode.vn/themes/megacode/images/icon_top.png) no-repeat;
+            background-image: url(https://megacode.vn/themes/megacode/images/icon_top.png);
+            background-position-x: initial;
+            background-position-y: initial;
+            background-size: initial;
+            background-attachment: initial;
+            background-origin: initial;
+            background-clip: initial;
+            background-color: initial;
+        }
+        .image{
+            width: 45px;
+        }
+        .logo{
+            padding-left: 80px;
+        }
+        ul.submenu_1{
+            color: white;
+            text-align: left;
+            position:absolute;
+            background-color:rgb(42, 113, 189);
+            padding-left: 0px;
+            list-style:none;
+            width: 208.5px;
+            display:none;
+        }
+        ul.menu li:hover ul.submenu_1{
+            display:block;
+        }
+        .menu ul.submenu_1 a {
+            padding:5px 10px 10px 10px;
+            border-bottom: 1.5px solid white;
+            background-color: rgb(42, 113, 189);
+        }
+        .menu ul.submenu_1 li:li :last-child a{
+            border: none;
+        }
+        .menu ul.submenu_1 li:hover a {
+            border-top: rgb(57, 230, 22);
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="header1 container"><a href="./Web/Trangchu.html"><img class="logo" src="https://www.wifiprovn.com/wp-content/uploads/2019/05/logo-wifiprovn.png" alt=""></a></div> 
+            <div class="box">
+                <form class="sbox" action="/search" method="get">
+                <input class="stext" type="text" name="q" placeholder="Tìm kiếm của bạn...">
+                <a class="sbutton" type="submit" href="javascript:void(0);">
+                <i class="fa fa-search"></i>
+                </a>
+                </form>
+            </div>
+            <div class="div1">
+                <a href="./Web/ThongtinSV.html" style="color: red;">Thông tin sinh viên</a>
+            </div>
+            <div class="div2">
+                <a href="#" class="container">Giỏ Hàng/0Đ</a>
+            </div>
+            <div class="div3">
+                <a href="#" class="container">
+                    <img class = "image" src="https://tse4.mm.bing.net/th?id=OIP.FkSnPghxO1kmMHCx--UgKQHaHa&pid=Api&P=0&w=169&h=169./GioHang.jpg" alt="">
+                </a>
+            </div>
+            <div class="div4">
+                <a href="./Web/DangnhapDangky.html">Đăng nhập/Đăng ký</a>
+            </div>
+        </header>
+        <nav>
+            <ul class="menu">
+                <li><a href="#" class="DMSP"> Danh Mục Sản Phẩm</a>
+                <ul class="submenu_1">
+                    <li><a href="#">Router/Switch</a></li>
+                    <li><a href="#">Wifi Gia Đình - MESH</a></li>
+                    <li><a href="#">WiFi access point</a></li>
+                    <li><a href="#">WiFi di động 4G 5G</a></li>
+                    <li><a href="#">Giải pháp camera</a></li>
+                    <li><a href="#">Thiết bị lưu trữ</a></li>
+                    <li><a href="#">Tường lửa - FireWall</a></li>
+                    <li><a href="#">Rujea</a></li>
+                    <li><a href="#">Aruba</a></li>
+                    <li><a href="#">CISCO</a></li>
+                </ul>
+                </li>
+                <li><a href="./Web/Trangchu.html">Trang Chủ</a></li>
+                <li><a href="./Web/Gioithieu.html">Giới Thiệu</a></li>
+                <li><a href="./Web/Baohanhdoitra.html">Chính Sách Bảo Hành & Đổi Trả</a></li>
+                <li><a href="./Web/Chinhsachbaomat.html">Chính Sách Bảo Mật</a></li>
+                <li><a href="./Web/Lienhe.html">Liên Hệ</a></li>
+                <li><a href="./Web/Tuvangiaiphap.html">Tư Vấn & Giải Pháp</a>
+                <ul class="submenu">
+                    <li><a href="./Web/Tuvangiaiphap1.html">Giải Pháp WiFi Doanh Nghiệp</a></li>
+                    <li><a href="./Web/Tuvangiaiphap2.html">Giải Pháp WiFi Dành Cho Doanh Nghiệp Vừa Nhỏ</a></li>
+                    <li><a href="./Web/Tuvangiaiphap3.html">WiFi Event-Sự Kiện</a></li>
+                </ul>
+                </li>
+            </ul>
+        </nav>
+        <div class="section">
+            <h2 style="color:rgb(22, 49, 137)">Giải pháp WiFi Grandstream dành cho doanh nghiệp vừa và nhỏ</h2>
+            <h1 style="color: rgb(22, 49, 137);">TÍNH NĂNG WIFI GRANDSTREAM</h1>
+            <p>Bộ phát wifi Grandstream với nhiều tính năng nổi trội, phù hợp cho các hotel, resort, building, khu vực công cộng…</p>
+            <p>Nào chúng ta cùng xem Grandstream có những gì nào?</p>
+            <img src="https://www.wifiprovn.com/wp-content/uploads/2021/02/giai-phap-wifi-aruba-instant-on-danh-cho-doanh-nghiep-vua-va-nho-8817.jpg" alt="" style="width: 450px;">
+            <h1 style="color: rgb(22, 49, 137);">I. CÁC TÍNH NĂNG WIFI GRANDSTREAM</h1>
+            <p><b>1/ Bộ phát wifi Grandstream với tải siêu lớn, > 200 user trên mỗi thiết bị Wifi</b></p>
+            <img src="https://www.wifiprovn.com/wp-content/uploads/2021/02/giai-phap-wifi-aruba-instant-on-danh-cho-doanh-nghiep-vua-va-nho-8817-1.jpg" alt="">
+            <p><b>2/ Quản lý đồng thời ở hàng ngàn địa điểm chi nhánh, hàng ngàn khách hàng khác nhau trên 1 tài khoản</b></p>
+            <p><b>Grandstream miễn phí Cloud controller,</b> Cho phép bạn:</p>
+            <ul>
+                <li>Quản lý Wifi từ bất kỳ đâu qua Web, App trên di động (Android và IOS)</li>
+                <li>Quản lý Wifi ở hàng ngàn địa điểm khác nhau trên 1 tài khoản duy nhất</li>
+                <li>Quản lý nhiều công ty, nhiều khách hàng khác nhau đồng thời</li>
+            </ul>
+            <img src="https://www.wifiprovn.com/wp-content/uploads/2021/02/giai-phap-wifi-aruba-instant-on-danh-cho-doanh-nghiep-vua-va-nho-8817-2.jpg" alt="">
+            <p><b>3/ Nhiều chế độ quản lý Wifi cực kỳ linh động</b></p>
+            <p>Thiết bị WiFi Grandstream cung cấp các cơ chế quản lý cực kỳ linh hoạt, đáp ứng mọi yêu cầu quản lý của bạn, bạn có thể:</p>
+            <ul>
+                <li>Quản lý Wifi thông qua Cloud, quản lý không giới hạn số lượng AP ở bất kỳ đâu</li>
+                <li>Grandstream cung cấp miễn phí phần mềm cài trên máy tính, tự bạn có thể thiết lập hệ thống quản lý riêng cho hệ thống Wifi của bạn, cho phép bạn quản lý lên tới 2500 bộ phát wifi đồng thời</li>
+                <li>Và hơn nữa Grandstream tích hợp sẵn trình quản lý Wifi qua bộ phát wifi hoặc router, cho phép bạn quản lý lên tới 300 thiết bị wifi đồng thời</li>
+            </ul>
+            <img src="https://www.wifiprovn.com/wp-content/uploads/2021/02/giai-phap-wifi-aruba-instant-on-danh-cho-doanh-nghiep-vua-va-nho-8817-3.jpg" alt="">
+            <p><b>4/ Nền tảng WiFi Marketing miễn phí với nhiều kịch bản tùy biến</b></p>
+            <p><b>Nền tảng wifi marketing miễn phí</b> trong cùng tài khoản quản lý Cloud controller, cho phép bạn:</p>
+            <ul>
+                <li>Quảng cáo video ảnh cho sản phẩm</li>
+                <li>Quảng cáo Slide ảnh theo múi giờ tùy ý, theo sở thích của bạn</li>
+                <li>Hay tạo phễu thu thập thông tin khách hàng như email, số phone..</li>
+                <li>Hay tạo các bảng khảo sát trực tiếp</li>
+            </ul>
+            <img src="https://www.wifiprovn.com/wp-content/uploads/2021/02/giai-phap-wifi-aruba-instant-on-danh-cho-doanh-nghiep-vua-va-nho-8817-4.jpg" alt="">
+            <p>Grandstream cung cấp nhiều giải pháp WiFi Marketing</p>
+            <ul>
+                <li>Phần mềm WiFi Marketing miễn phí</li>
+                <li>Giải pháp sủ dụng WiFi Marketing thu thập thông tin khách hàng</li>
+                <li>Giải pháp WiFi marketing khảo sát ý kiến người dùng</li>
+                <li>Giải pháp quảng cáo WiFi Marketing hiển thị slide Ảnh/Video trên mỗi SSID</li>
+                <li>Giải pháp cấp Voucher (password) cho người dùng khi kết nối WiFi</li>
+            </ul>
+            <p>Và tất cả các nền tảng trên được miễn phí 100% và chạy Cloud hoàn toàn, bạn không phải cài bất kỳ phần mềm gì khi sử dụng</p>
+            <p><b>5/ Quản lý người dùng, nhóm người dùng cực kỳ hiệu quả</b></p>
+            <p><b>Với chế độ quản lý người dùng cực kỳ linh hoạt và hiệu quả:</b></p>
+            <ul>
+                <li>Quản lý nhóm người dùng với băng thông hạn chế tùy ý</li>
+                <li>Quản lý người dùng, quản lý được kết nối internet, kết nối vào mạng nội bộ…</li>
+            </ul>
+            <img src="https://www.wifiprovn.com/wp-content/uploads/2021/02/giai-phap-wifi-aruba-instant-on-danh-cho-doanh-nghiep-vua-va-nho-8817-5.jpg" alt="">
+            <p><b>6/ Tính năng Mesh kết nối không dây, </b>Grandstream cung cấp giải pháp wifi mesh kết nối cho những điểm không đi được dây</p>
+            <img src="https://www.wifiprovn.com/wp-content/uploads/2021/02/giai-phap-wifi-aruba-instant-on-danh-cho-doanh-nghiep-vua-va-nho-8817-6.jpg" alt="">
+            <p><b>7/ Roaming tự động, </b>người dùng có thể dịch chuyển bất kỳ điểm nào và wifi luôn luôn đảm bảo kết nối không bị gián đoạn</p>
+            <img src="https://www.wifiprovn.com/wp-content/uploads/2021/02/giai-phap-wifi-aruba-instant-on-danh-cho-doanh-nghiep-vua-va-nho-8817-7.jpg" alt="">
+            <p><b>8/ Hỗ trợ cả 2 băng tần đồng thời AC (2.4/5Ghz)</b></p>
+            <img src="https://www.wifiprovn.com/wp-content/uploads/2021/02/giai-phap-wifi-aruba-instant-on-danh-cho-doanh-nghiep-vua-va-nho-8817-8.jpg" alt="" style="padding-left: 28%;">
+            <p><b>9/ Chế độ quản lý người dùng cao cấp</b></p>
+            <ul>
+                <li>Quản lý băng thông của từng người dùng/ địa chỉ IP/ địa chỉ MAC, từng SSIDs</li>
+                <li>Giới hạn thời gian kết nối WiFi của mỗi người dùng</li>
+            </ul>
+            <p><b>10/ Quản lý AP trực quan</b></p>
+            <ul>
+                <li>Cảnh báo khi WiFi lỗi hỏng thông báo qua Email</li>
+                <li>Dịch chuyển AP giữa các lớp mạng người dùng</li>
+                <li>Hỗ trợ 16 SSID thiết lập nhiều mạng khác nhau</li>
+            </ul>
+            <img src="https://www.wifiprovn.com/wp-content/uploads/2021/02/giai-phap-wifi-aruba-instant-on-danh-cho-doanh-nghiep-vua-va-nho-8817-9.jpg" alt="">
+            <p><b>Các tính năng nội bật của thiết bị Wifi Grandstream</b></p>
+            <img src="https://www.wifiprovn.com/wp-content/uploads/2021/02/giai-phap-wifi-aruba-instant-on-danh-cho-doanh-nghiep-vua-va-nho-8817-10.jpg" alt="" style="padding-left: 1.5%;">
+            <p><b>Mô hình kết nối tổng thể Wifi Granstream</b></p>
+            <img src="https://www.wifiprovn.com/wp-content/uploads/2021/02/giai-phap-wifi-aruba-instant-on-danh-cho-doanh-nghiep-vua-va-nho-8817-11.jpg" alt="" style="padding-left: 13.2%;">
+            <p><b>Giao diện quản lý Cloud trực quan</b></p>
+            <img src="https://www.wifiprovn.com/wp-content/uploads/2021/02/giai-phap-wifi-aruba-instant-on-danh-cho-doanh-nghiep-vua-va-nho-8817-12.jpg" alt="" style="padding-left: 11%;">
+            <p><b>Hỗ trợ quản lý Cloud Controller miễn phí, kết nối lên tới 1000 bộ phát Wifi đồng thời</b></p>
+            <img src="https://www.wifiprovn.com/wp-content/uploads/2021/02/giai-phap-wifi-aruba-instant-on-danh-cho-doanh-nghiep-vua-va-nho-8817-13.jpg" alt="" style="padding-left: 14%;">
+            <p><b>Quản lý Local Controller – tích hợp sẵn Controller trên thiết bị không cần phải mua hay cài đặt bất kỳ phần mềm gì</b></p>
+            <img src="https://www.wifiprovn.com/wp-content/uploads/2021/02/giai-phap-wifi-aruba-instant-on-danh-cho-doanh-nghiep-vua-va-nho-8817-14.jpg" alt="" style="padding-left: 12.5%;">
+            <p><b>Quản lý trạng thái Wifi và người dùng trực quan</b></p>
+            <img src="https://www.wifiprovn.com/wp-content/uploads/2021/02/giai-phap-wifi-aruba-instant-on-danh-cho-doanh-nghiep-vua-va-nho-8817-15.jpg" alt="" style="padding-left: 15.8%;">
+            <p><b>Hỗ trợ thiết lập Wifi Marketing vô cùng đơn giản</b></p>
+            <img src="https://www.wifiprovn.com/wp-content/uploads/2021/02/giai-phap-wifi-aruba-instant-on-danh-cho-doanh-nghiep-vua-va-nho-8817-16.jpg" alt="" style="padding-left: 7.5%;">
+            <p><b>Điểm khác biệt của WiFi Grandstream</b></p>
+            <p><b>* Dịch vụ quảng cáo slide ảnh/video qua 1 SSID </b>người dùng, chỉ cần kích hoạt là có thể sử dụng được ngay</p>
+            <p>Người dùng bắt buộc phải xem qua <b>danh sách </b>ảnh/Video quảng cáo trước khi được kết nối internet</p>
+            <img src="https://www.wifiprovn.com/wp-content/uploads/2021/02/giai-phap-wifi-aruba-instant-on-danh-cho-doanh-nghiep-vua-va-nho-8817-17.jpg" alt="" style="padding-left:1.5%;">
+            <p><b>* Tích hợp miễn phí phần mềm WiFi marketing khảo sát thu thập thông tin người dùng,</b></p>
+            <p>Bạn muốn thu thập thông tin khách hàng ở quán cafe, các siêu thị, rạp chiếu phim, các tụ điểm công cộng.. bạn có thể kích hoạt ngay lên sử dụng luôn tính năng này.</p>
+            <p>Tính năng yêu cầu người dùng phải khai báo thông tin trước khi được kết nối internet</p>
+            <img src="https://www.wifiprovn.com/wp-content/uploads/2021/02/giai-phap-wifi-aruba-instant-on-danh-cho-doanh-nghiep-vua-va-nho-8817-18.jpg" alt="" style="padding-left: 35%;">
+            <p><b>* Tích hợp miễn phí modul WiFi Marketing khảo sát thông tin đánh giá ý kiến người dùng</b></p>
+            <p>Thật tuyệt vời tính năng này đã được tích hợp sẵn trong phần Wifi Marketing miễn phí của Grandstream, bạn có thể xem hướng dẫn sử dụng tại:</p>
+            <img src="https://www.wifiprovn.com/wp-content/uploads/2021/02/giai-phap-wifi-aruba-instant-on-danh-cho-doanh-nghiep-vua-va-nho-8817-19.jpg" alt="" style="padding-left: 35%;">
+            <p><b>* Quản lý băng thông thông minh</b></p>
+            <p>Hệ thống cho phép quản lý băng thông sử dụng từng SSID/ MAC/IP… và Người dùng, tránh người nào dùng nhiều quá ảnh hưởng đến băng thông chung toàn bộ hệ thống</p><br><br><br>
+
+        </div>
+        <footer>
+            <div class="footer1">
+                <div class="f1">
+                    <h3 style="font-weight: lighter; font-size: 20px; color: rgb(22, 47, 137);">GIỚI THIỆU WIFIPROVN.COM</h3>
+                    <p>Ngôi nhà, văn phòng cũng như nơi kinh doanh tuyệt đẹp của bạn với hàng loạt thiết bị hiện đại không thể thiếu đi phần quan trọng là hệ thống WIFI đủ mạnh và tin cậy để bạn có thể kết nối bất kỳ lúc nào.</p>
+                    <p><b>Wifiprovn.com</b> chuyên tư vấn về các hệ thống, thiết bị WIFI chất lượng cao dành cho gia đình và kinh doanh. Thiết bị được nhập từ US với chất lượng cao từ các thương hiệu nổi tiếng như NETGEAR, LINKSYS, ASUS... Đảm bảo mọi người sẽ tìm được giải pháp kết nối không dây cho gia đình với chất lượng tốt nhất.</p>
+                    <a href="http://online.gov.vn/Home/WebDetails/48672?AspxAutoDetectCookieSupport=1" target="blank"><img src="https://www.wifiprovn.com/wp-content/uploads/2020/01/logoSaleNoti.png" style="max-height: 75px;"></a>
+                </div>
+                <div class="f2">
+                    <h3 style="font-weight: lighter; font-size: 20px; color: rgb(22, 49, 137);">ĐIỀU HƯỚNG</h3>
+                    <a href="">Chính sách vận chuyển</a><br>
+                    <a href="">Hướng dẫn mua hàng từ xa</a><br>
+                    <a href="">Hướng dẫn thanh toán</a><br>
+                    <a href="">Chính sách bảo mật</a><br>
+                    <a href="">Chính sách bảo hành</a><br>
+                    <a href="">Hướng dẫn mua hàng trả góp</a><br>
+                </div>
+                <div class="f3">
+                    <h3 style="font-weight: lighter; font-size: 20px; color: rgb(22, 49, 137);">THÔNG TIN LIÊN HỆ</h3>
+                    <p><b>Kho 1:</b> 127 Trần Minh Quyền, P.10, Q.10, TP.HCM</p>
+                    <p><b>Kho 2:</b> A2-10-05 Chung cư OPAL RIVERSIDE, đường số 10, Hiệp Bình Chánh, Q.Thủ Đức, TP.HCM</p>
+                    <p><b>Email:</b> infor@wifiprovn.com</p>
+                    <p><b>Mr Tâm:</b> 0988.839.800</p>
+                    <p><b>Mr Thiện:</b> 038.294.5588</p>
+                        <ul>
+                            <li><a href="https://www.facebook.com/wifitek" target="blank">Theo dõi trang Facebook</a></li>
+                            <li><a href="mailto:infor@wifiprovn.com" target="blank">Gửi Email cho chúng tôi</a></li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+            <div class="footer2">
+                <p>CÔNG TY TNHH THƯƠNG MẠI – DỊCH VỤ CÔNG NGHỆ MIS. Giấy chứng nhận số: 0314838811. Ngày cấp: 16/01/2018. Nơi cấp: Sở Kế hoạch và Đầu tư TP.Hồ Chí Minh. Địa chỉ: 176/19/6B Quốc Lộ 13 cũ, Phường Hiệp Bình Phước, Quận Thủ Đức, TP. Hồ Chí Minh. Số điện thoại: 0988.839.800. Email: infor@wifiprovn.com.</p>
+                <p>© 2017 Wifiprovn. Design & Develop HT Media</p>
+            </div>
+            <a href="#" class="scrollup" style="z-index: 100; display: inline;"></a>
+        </footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.submenu').parent('li').addClass('has-child');
+        })
+    </script>
+</body>
+</html>

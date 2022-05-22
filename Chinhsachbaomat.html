@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Document</title>
+    <style>
+         .wrapper{
+            line-height: 1.5;
+            background-color: rgb(240,240,240);
+            width: 100%;
+            height: auto;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        header{
+            background-color: rgb(255,255,255);
+            width: 100%;
+            height: 65px;
+            display: flex;
+            justify-content:space-between;
+            align-items: center;
+        }
+        header a{
+            color: rgb(53, 105, 156);
+        }
+        nav{
+            background-color: rgb(53, 105, 156);    
+            width: 100%;
+            height: 40px;
+            display: flex;
+            justify-content:space-between;
+            justify-content:center;
+            font-size: 15px;
+            margin-top: 5px;
+        }
+        .section{
+            background-color: rgb(240,240,240);
+            width: 85%;
+            height: auto;
+            margin: auto;
+        }
+        .menu{
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .menu li a {
+            color:#f8f8f8;
+            font-weight: bold;
+            display: block;
+            padding:9px 30px;
+            text-decoration: none;
+        }
+        .menu li {
+            position: relative;
+            font-weight: bold;
+        }
+        .DMSP{
+            background-color:rgb(221,0,0);
+        }
+        .menu ul.submenu{
+            text-align: left;
+            position:absolute;
+            background-color:rgb(42, 113, 189);
+            padding-left: 0px;
+            list-style:none;
+            width: 200px;
+            display:none;
+        }
+        ul.menu li:hover ul.submenu{
+            display:block;
+        }
+        .menu ul.submenu a {
+            padding:5px 10px 10px 10px;
+            border-top: 1.5px solid white;
+            background-color: rgb(42, 113, 189);
+        }
+        .menu ul.submenu li:li :last-child a{
+            border: none;
+        }
+        .menu ul.submenu li:hover a {
+            border-bottom: rgb(57, 230, 22);
+            background-color: aqua;
+        }
+        .menu>li>a{
+            position: relative;
+        }
+        .menu>li>a:before{
+            content:"";
+            height:2px;
+            width: 0px;
+            background: white;
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            transition: 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+        .menu>li:hover>a:before{
+            width: 100%;
+        }
+        .menu>li.has-child::after{
+        font-family: "Font Awesome 5 Free"; 
+        font-weight: 900; 
+        content: "\f107";
+        color:rgba(255, 255, 255, 0.616);
+        position:absolute;
+        top: 0px;
+        right: 0px;
+        padding:18px 15px;
+        }
+        .header1{
+            color:blue;
+            font-size: 40px;
+            padding-right: 400px;
+            display:flex;
+        }
+        .header1 a { 
+            text-decoration: none; 
+            display: flex;
+        }
+        .container{
+            margin:0px auto;
+            max-width: 960px;
+        }
+        .div1{
+            margin:0px 10px;
+        }
+        .div1 a{
+            text-decoration:none;
+        }
+        .div1 a:hover{
+            color:rgb(22, 47, 137);
+        }
+        .div2{
+            padding-left: 100px;
+        }
+        .div2 a{
+            text-decoration:none;
+        }
+        .div2 a:hover{
+            color:rgb(22,47,137);
+        }
+        .div3{
+            padding: 0px;
+            padding-right: 150px;
+        }
+        .div3 a:hover{
+          background-color:rgb(22, 49, 137); 
+        }
+        .div4 a{
+            margin-right:100px;
+            text-decoration: none;
+        }
+        .box {
+            height:40px;
+            position:absolute;
+            left:35%;
+            background:#2f3640;
+            border-radius: 50px;
+            padding:5px;
+            margin-left: -120px;
+        }
+        .sbutton{
+            color:#e84118;
+            float:right;
+            width:40px;
+            height:40px;
+            border-radius: 50%;
+            background:#DADADA;
+            display: flex;
+            justify-content:center;
+            align-items:center;
+            text-decoration: none;
+            transition:3s;
+        }
+        .stext{
+            border:none;
+            background:none;
+            outline: none;
+            float:left;
+            padding: 0px;
+            color:white;
+            font-size:15px;
+            transition:1.5s;
+            line-height:40px;
+            width: 0px;
+        }
+        .sbox:hover > .stext{
+            width:200px;
+            padding: 0 5px;
+            border-radius: 50px;
+        }
+        .sbox:hover>.sbutton{
+            background:#fff;
+        }
+        .fa-search{
+            color: black;
+        }.sbutton{
+            color:#e84118;
+            float:right;
+            width:40px;
+            height:40px;
+            border-radius: 50%;
+            background:#DADADA;
+            display: flex;
+            justify-content:center;
+            align-items:center;
+            text-decoration: none;
+            transition:0.5s;
+        }
+        .stext{
+            border:none;
+            background:none;
+            outline: none;
+            float:left;
+            padding:0;
+            color:white;
+            font-size:15px;
+            transition:0.5s;
+            line-height:40px;
+            width:0px;
+        }
+        .sbox:hover > .stext{
+            width:200px;
+            padding: 0 5px;
+            border-radius: 50px;
+        }
+        .sbox:hover>.sbutton{
+            background:#fff;
+        }
+        .fa-search{
+            color: #001EFF;
+        }
+        footer{
+            width: 100%;
+            height: 500px;
+        }
+        .footer1{
+            width: 100%;
+            height: 400px;
+            background-color: rgb(247,247,247);
+            padding-top: 20px;
+            font-size: 15px;
+        }
+        .f1{
+            width: 30%;
+            height: 400px;
+            float: left;
+            padding-left: 9%;
+            padding-right: 1.5%;
+        }
+        .f2{
+            width: 15%;
+            height: 400px;
+            float: left;
+            padding-left: 2%;
+            padding-right: 1%;
+        }
+        .f3{
+            width: 25.5%;
+            height: 400px;
+            float: left;
+            padding-left: 7%;
+            padding-right: 9%;
+            line-height: 1.1;
+        }
+        .footer2{
+            background-color: rgb(222,222,222);
+            width: 80%;
+            height: 90px;
+            text-align: center;
+            padding-top:10px;
+            font-size: 11px;
+            padding-left: 10%;
+            padding-right: 10%;
+            color: gray;
+        }
+        .footer{
+            text-decoration: none;
+            color: rgb(51, 115, 181);
+            line-height: 2;
+        }
+        .scrollup {
+            width: 40px;
+            height: 40px;
+            opacity: 0.3;
+            position: fixed;
+            bottom: 50px;
+            right: 35px;
+            display: none;
+            background: url(https://megacode.vn/themes/megacode/images/icon_top.png) no-repeat;
+            background-image: url(https://megacode.vn/themes/megacode/images/icon_top.png);
+            background-position-x: initial;
+            background-position-y: initial;
+            background-size: initial;
+            background-attachment: initial;
+            background-origin: initial;
+            background-clip: initial;
+            background-color: initial;
+        }
+        .image{
+            width: 45px;
+        }
+        .logo{
+            padding-left: 80px;
+        }
+        ul.submenu_1{
+            color: white;
+            text-align: left;
+            position:absolute;
+            background-color:rgb(42, 113, 189);
+            padding-left: 0px;
+            list-style:none;
+            width: 208.5px;
+            display:none;
+        }
+        ul.menu li:hover ul.submenu_1{
+            display:block;
+        }
+        .menu ul.submenu_1 a {
+            padding:5px 10px 10px 10px;
+            border-bottom: 1.5px solid white;
+            background-color: rgb(42, 113, 189);
+        }
+        .menu ul.submenu_1 li:li :last-child a{
+            border: none;
+        }
+        .menu ul.submenu_1 li:hover a {
+            border-top: rgb(57, 230, 22);
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="header1 container"><a href="./Web/Trangchu.html"><img class="logo" src="https://www.wifiprovn.com/wp-content/uploads/2019/05/logo-wifiprovn.png" alt=""></a></div> 
+            <div class="box">
+                <form class="sbox" action="/search" method="get">
+                <input class="stext" type="text" name="q" placeholder="Tìm kiếm của bạn...">
+                <a class="sbutton" type="submit" href="javascript:void(0);">
+                <i class="fa fa-search"></i>
+                </a>
+                </form>
+            </div>
+            <div class="div1">
+                <a href="./Web/ThongtinSV.html" style="color: red;">Thông tin sinh viên</a>
+            </div>
+            <div class="div2">
+                <a href="#" class="container">Giỏ Hàng/0Đ</a>
+            </div>
+            <div class="div3">
+                <a href="#" class="container">
+                    <img class = "image" src="https://tse4.mm.bing.net/th?id=OIP.FkSnPghxO1kmMHCx--UgKQHaHa&pid=Api&P=0&w=169&h=169./GioHang.jpg" alt="">
+                </a>
+            </div>
+            <div class="div4">
+                <a href="./Web/DangnhapDangky.html">Đăng nhập/Đăng ký</a>
+            </div>
+        </header>
+        <nav>
+            <ul class="menu">
+                <li><a href="#" class="DMSP"> Danh Mục Sản Phẩm</a>
+                <ul class="submenu_1">
+                    <li><a href="#">Router/Switch</a></li>
+                    <li><a href="#">Wifi Gia Đình - MESH</a></li>
+                    <li><a href="#">WiFi access point</a></li>
+                    <li><a href="#">WiFi di động 4G 5G</a></li>
+                    <li><a href="#">Giải pháp camera</a></li>
+                    <li><a href="#">Thiết bị lưu trữ</a></li>
+                    <li><a href="#">Tường lửa - FireWall</a></li>
+                    <li><a href="#">Rujea</a></li>
+                    <li><a href="#">Aruba</a></li>
+                    <li><a href="#">CISCO</a></li>
+                </ul>
+                </li>
+                <li><a href="./Web/Trangchu.html">Trang Chủ</a></li>
+                <li><a href="./Web/Gioithieu.html">Giới Thiệu</a></li>
+                <li><a href="./Web/Baohanhdoitra.html">Chính Sách Bảo Hành & Đổi Trả</a></li>
+                <li><a href="./Web/Chinhsachbaomat.html">Chính Sách Bảo Mật</a></li>
+                <li><a href="./Web/Lienhe.html">Liên Hệ</a></li>
+                <li><a href="./Web/Tuvangiaiphap.html">Tư Vấn & Giải Pháp</a>
+                <ul class="submenu">
+                    <li><a href="./Web/Tuvangiaiphap1.html">Giải Pháp WiFi Doanh Nghiệp</a></li>
+                    <li><a href="./Web/Tuvangiaiphap2.html">Giải Pháp WiFi Dành Cho Doanh Nghiệp Vừa Nhỏ</a></li>
+                    <li><a href="./Web/Tuvangiaiphap3.html">WiFi Event-Sự Kiện</a></li>
+                </ul>
+                </li>
+            </ul>
+        </nav>
+        <div class="section">
+            <h1 style="color: rgb(22, 49, 137);">CHÍNH SÁCH BẢO MẬT THÔNG TIN</h1>
+            <h3 style="color: rgb(22, 49, 137);">Điều khoản dịch vụ</h3>
+            <p>Công ty TNHH Thương Mại – Dịch Vụ Công Nghệ MIS( Wifiprovn)  chúng tôi luôn tôn trọng sự riêng tư của bạn, và đó là lý do chúng tôi luôn cam kết bảo vệ những thông tin cá nhân của bạn. Trong tài liệu này, khái niệm “thông tin cá nhân” được hiểu bao gồm tên, địa chỉ, địa chỉ email, số điện thoại hay bất kỳ thông tin cá nhân nào khác mà bạn cung cấp, hoặc bất kỳ thông tin nào về bạn được thu thập theo luật định hiện hành. Mong rằng tài liệu sẽ giúp bạn hiểu rõ những thông tin cá nhân nào mà chúng tôi sẽ thu thập, cũng như cách chúng tôi sử dụng những thông tin này sau đó. Khi bạn truy cập và sử dụng trang web (bao gồm cả việc đăng ký dịch vụ trực tuyến), chúng tôi hiểu rằng bạn hoàn toàn đồng ý với những điều khoản của chính sách này.</p>
+            <ul>
+                <li style="list-style-type: decimal; font-weight: bold;">Mục đích và phạm vi thu thập thông tin</li>
+                <p>Tất cả nội dung bạn xem được trên trang web nhằm phục vụ nhu cầu thông tin của bạn và giúp bạn lựa chọn dịch vụ. Vì thế, bạn được sử dụng trang web mà không cần cung cấp bất kỳ thông tin cá nhân nào. Tuy nhiên, trong một số trường hợp, khi liên quan đến việc đăng ký dịch vụ, chúng tôi có thể yêu cầu bạn cung cấp thông tin cá nhân theo quy định của Nhà nước về việc quản lý chủ thể tên miền. Các thông tin cá nhân được cung cấp nằm trong phạm vi thông tin công khai của chủ thể và thông tin doanh nghiệp, không bao gồm các thông tin riêng tư và các thông tin bí mật (như thông tin thẻ tín dụng, cuộc sống riêng tư).</p>
+                <li style="list-style-type: decimal; font-weight: bold;">Phạm vi sử dụng thông tin</li>
+                <p>Khi bạn cung cấp các thông tin cần thiết, chúng tôi sẽ sử dụng chúng để đáp ứng yêu cầu của bạn, hoặc chúng tôi có thể liên lạc với bạn qua thư từ, email, tin nhắn hay điện thoại; hoặc tuân theo luật định hiện hành, sử dụng các phương tiện trên để giới thiệu đến bạn những sản phẩm, dịch vụ hay chương trình khuyến mãi mới từ Wifiprovn. Khi cung cấp thông tin cho chúng tôi qua trang web này, bạn hiểu rõ và chấp thuận việc thu thập, sử dụng và tiết lộ những thông tin cá nhân nêu trên cho một số mục đích được quy định trong trang này.</p>
+                <p>Bạn cũng hiểu và đồng ý rằng các thông tin cung cấp có thể được sử dụng cho các cơ quan chức năng theo yêu cầu của luật định mà không cần phải báo trước. Trình tự và thủ tục cung cấp thông tin của chúng tôi được thực hiện đúng theo các quy định hiện hành của pháp luật Việt Nam.</p>
+                <li style="list-style-type: decimal; font-weight: bold;">Thời gian lưu trữ thông tin</li>
+                <p>Bạn hoàn toàn đồng ý và chấp thuận rằng những thông tin cá nhân bạn cung cấp khi sử dụng trang web có thể được lưu trữ tại trụ sở của Wifiprovn, có thể được lưu trữ tại một số máy chủ hiện có hay chưa biết trước cho mục đích vận hành và phát triển trang web cũng như các dịch vụ của Wifiprovn trong và sau thời gian đăng ký.</p>
+                <p>Nếu bạn đặt hàng một sản phẩm, yêu cầu một dịch vụ hoặc gởi thư phản hồi lên trang web, chúng tôi có thể liên hệ với bạn để có những thông tin bổ sung cần thiết cho việc xử lý hoặc hoàn thành đơn đặt hàng và / hoặc yêu cầu của bạn. Tuy nhiên, chúng tôi sẽ không cung cấp thông tin này cho một bên thứ ba mà không được sự cho phép của bạn, ngoại trừ các trường hợp bắt buộc theo quy định của pháp luật hiện hành.</p>
+                <p>Wifiprovn cam kết bảo vệ sự riêng tư của bạn, không mua bán thông tin cá nhân của bạn cho các công ty khác vì các mục đích khuyến mãi.</p>
+                <li style="list-style-type: decimal; font-weight: bold;">Cung cấp cho các đơn vị khác</li>
+                <p>Chúng tôi có thể sử dụng một số đơn vị khác để cung cấp sản phẩm hay dịch vụ cho bạn. Chúng tôi cũng cần trao đổi thông tin cá nhân của bạn đến các đơn vị này để họ hoàn thành yêu cầu của bạn. Những đơn vị này cũng không được phép sử dụng thông tin cá nhân của bạn cho các mục đích khác và chúng tôi đồng thời yêu cầu họ tuân theo quy định bảo mật khi tiến hành cung cấp dịch vụ.</p>
+                <li style="list-style-type: decimal; font-weight: bold;">Ghi nhận thông tin trình duyệt</li>
+                <p>Đôi khi, thông tin có thể được đưa vào máy tính của bạn để giúp chúng tôi nâng cấp trang web hay cải thiện chất lượng dịch vụ cho bạn. Những thông tin này thường được biết đến dưới dạng các “cookies” mà nhiều trang web hiện cũng đang sử dụng. “Cookies” là những mẩu thông tin lưu trữ trong đĩa cứng hay trình duyệt trên máy tính của bạn, không phải trên trang web. Chúng cho phép thu thập một số thông tin về máy tính của bạn như địa chỉ IP, hệ điều hành, chế độ trình duyệt và địa chỉ của các trang web liên quan.</p>
+                <p>Nếu bạn không muốn nhận các cookies này, hoặc muốn được thông báo khi các cookies này được đặt vào, bạn có thể cài đặt chế độ trình duyệt của bạn thực hiện điều này nếu trình duyệt của bạn hỗ trợ. Vui lòng lưu ý, nếu bạn tắt chế độ nhận cookies, bạn sẽ không thể truy cập hay sử dụng một số tiện ích trên trang web mà không được xác định trước. Chúng tôi không cố ý hạn chế việc sử dụng của bạn trong tình huống này, đây chỉ là giới hạn trong việc lập trình và xây dựng trang web.</p>
+                <li style="list-style-type: decimal; font-weight: bold;">Sự an toàn</li>
+                <p>Khi lập trình trang web, chúng tôi có thể đặt những luật định hợp lý mang tính thương mại để ngăn chặn hành vi truy cập bất hợp pháp và việc sử dụng không thích đáng các thông tin cá nhân của bạn đã gửi cho Wifiprovn thông qua việc sử dụng trang web này. Nếu trang web này hỗ trợ việc giao dịch trực tuyến, nó sẽ được áp dụng một tiêu chuẩn công nghệ được gọi là SSL (Secure Sockets Layer), để bảo vệ tính bảo mật và an toàn trên đường truyền dữ liệu.</p>
+                <p>Vì luôn có những rủi ro liên quan đến vấn đề cung cấp dữ liệu cá nhân, cho dù là cung cấp trực tiếp, qua điện thoại hay qua mạng internet, hay qua các phương tiện kỹ thuật khác; và không có hệ thống kỹ thuật nào an toàn tuyệt đối hay chống được tất cả các “hacker” và “tamper” (người xâm nhập trái phép để lục lọi thông tin), Wifiprovn luôn nỗ lực tiến hành những biện pháp đề phòng thích hợp đối với từng đặc tính của thông tin để ngăn chặn và giảm thiểu tối đa các rủi ro có thể khi bạn sử dụng trang web này.</p>
+                <li style="list-style-type: decimal; font-weight: bold;">Thông tin qua E-mail</li>
+                <p>Khi bạn đăng ký dịch vụ, địa chỉ e-mail của bạn cung cấp sẽ dùng làm công cụ trao đổi thông tin với bạn. Trước hết bạn hãy chắc rằng bạn cung cấp địa chỉ e-mail hữu dụng đối với bạn trong suốt quá trình sử dụng dịch vụ.</p>
+                <p>Chúng tôi có thể gởi những thông tin bí mật qua e-mail hay tiếp nhận yêu cầu hỗ trợ của bạn. Trong trường hợp bạn không còn sử dụng e-mail đã cung cấp, bạn phải báo cho chúng tôi để về việc thay đổi này.</p>
+                <p>Để bảo vệ bạn, Wifiprovn có thể tạm thời ngưng tiếp nhận yêu cầu qua e-mail bạn đã cung cấp nếu nhận thấy có sự gian lận hoặc thông tin bất thường – cho đến khi chúng tôi liên hệ được với bạn để xác nhận.</p>
+                <li style="list-style-type: decimal; font-weight: bold;">Phương tiện và công cụ điều chỉnh thông tin cá nhân</li>
+                <p>Wifiprovn sẽ chủ động hoặc theo yêu cầu của bạn bổ sung, hiệu chỉnh hay tẩy xóa các dữ liệu thông tin cá nhân không chính xác, không đầy đủ hoặc không cập nhật khi bạn còn liên kết với hoạt động của chúng tôi.</p>
+                <p>Bạn toàn quyền tiếp cận và chỉnh sửa thông tin cá nhân của mình bất kể thời gian nào trên các tài khoản trực tuyến mà bạn được cung cấp. Bạn cũng hiểu rằng chúng tôi vẫn lưu trữ lịch sử thay đổi của bạn vì mục đích quản lý và giải quyết các tranh chấp (nếu có) sau này.</p>
+                <li style="list-style-type: decimal; font-weight: bold;">Đối tượng “Trẻ vị thành niên”</li>
+                <p>Wifiprovn từ chối phục vụ cá nhân còn ở độ tuổi Trẻ vị thành niên (do luật pháp địa phương mà bạn cư ngụ quy định) không được quyền mua hay tìm cách sử dụng dựa trên điều lệ hợp pháp khác trên trang web này nếu không có sự chấp thuận của ba/mẹ hay người giám hộ hợp pháp, trừ khi luật pháp địa phương có áp dụng hay cho phép.</p>
+                <li style="list-style-type: decimal; font-weight: bold;">Các đường liên kết ngoài trang web</li>
+                <p>Trang web này có thể chứa các đường liên kết đến các trang web khác được đặt vào nhằm mục đích giới thiệu hoặc bổ sung thông tin liên quan để bạn tham khảo. Wifiprovn không chịu trách nhiệm về nội dung hay các hành vi của bất kỳ trang web nào khác.</p>
+                <li style="list-style-type: decimal; font-weight: bold;">Việc thay đổi quy định</li>
+                <p>Wifiprovn có thể thay đổi quy định này một cách không thường xuyên, bao gồm việc bổ sung, loại bỏ một phần nội dung hoặc tạm ngưng trang web mà không cần báo trước. Tuy nhiên, nếu quy định này được thay đổi theo hướng có thể gây bất lợi cho bạn, Wifiprovn sẽ cố gắng thông báo về sự thay đổi qua e-mail bạn đã cung cấp hoặc ngay trên trang chủ.</p>
+                <li style="list-style-type: decimal; font-weight: bold;">Địa chỉ của đơn vị thu thập và quản lý thông tin cá nhân</li>
+                <p>Mọi vấn đề liên quan đến bảo mật thông tin được thực hiện và cam kết bởi Wifiprovn tại các địa chỉ thông báo chính thức trên website Wifiprovn.com này.</p>
+            </ul>
+            <br><br>
+        </div>
+        <footer>
+            <div class="footer1">
+                <div class="f1">
+                    <h3 style="font-weight: lighter; font-size: 20px; color: rgb(22, 47, 137);">GIỚI THIỆU WIFIPROVN.COM</h3>
+                    <p>Ngôi nhà, văn phòng cũng như nơi kinh doanh tuyệt đẹp của bạn với hàng loạt thiết bị hiện đại không thể thiếu đi phần quan trọng là hệ thống WIFI đủ mạnh và tin cậy để bạn có thể kết nối bất kỳ lúc nào.</p>
+                    <p><b>Wifiprovn.com</b> chuyên tư vấn về các hệ thống, thiết bị WIFI chất lượng cao dành cho gia đình và kinh doanh. Thiết bị được nhập từ US với chất lượng cao từ các thương hiệu nổi tiếng như NETGEAR, LINKSYS, ASUS... Đảm bảo mọi người sẽ tìm được giải pháp kết nối không dây cho gia đình với chất lượng tốt nhất.</p>
+                    <a href="http://online.gov.vn/Home/WebDetails/48672?AspxAutoDetectCookieSupport=1" target="blank"><img src="https://www.wifiprovn.com/wp-content/uploads/2020/01/logoSaleNoti.png" style="max-height: 75px;"></a>
+                </div>
+                <div class="f2">
+                    <h3 style="font-weight: lighter; font-size: 20px; color: rgb(22, 49, 137);">ĐIỀU HƯỚNG</h3>
+                    <a href="">Chính sách vận chuyển</a><br>
+                    <a href="">Hướng dẫn mua hàng từ xa</a><br>
+                    <a href="">Hướng dẫn thanh toán</a><br>
+                    <a href="">Chính sách bảo mật</a><br>
+                    <a href="">Chính sách bảo hành</a><br>
+                    <a href="">Hướng dẫn mua hàng trả góp</a><br>
+                </div>
+                <div class="f3">
+                    <h3 style="font-weight: lighter; font-size: 20px; color: rgb(22, 49, 137);">THÔNG TIN LIÊN HỆ</h3>
+                    <p><b>Kho 1:</b> 127 Trần Minh Quyền, P.10, Q.10, TP.HCM</p>
+                    <p><b>Kho 2:</b> A2-10-05 Chung cư OPAL RIVERSIDE, đường số 10, Hiệp Bình Chánh, Q.Thủ Đức, TP.HCM</p>
+                    <p><b>Email:</b> infor@wifiprovn.com</p>
+                    <p><b>Mr Tâm:</b> 0988.839.800</p>
+                    <p><b>Mr Thiện:</b> 038.294.5588</p>
+                        <ul>
+                            <li><a href="https://www.facebook.com/wifitek" target="blank">Theo dõi trang Facebook</a></li>
+                            <li><a href="mailto:infor@wifiprovn.com" target="blank">Gửi Email cho chúng tôi</a></li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+            <div class="footer2">
+                <p>CÔNG TY TNHH THƯƠNG MẠI – DỊCH VỤ CÔNG NGHỆ MIS. Giấy chứng nhận số: 0314838811. Ngày cấp: 16/01/2018. Nơi cấp: Sở Kế hoạch và Đầu tư TP.Hồ Chí Minh. Địa chỉ: 176/19/6B Quốc Lộ 13 cũ, Phường Hiệp Bình Phước, Quận Thủ Đức, TP. Hồ Chí Minh. Số điện thoại: 0988.839.800. Email: infor@wifiprovn.com.</p>
+                <p>© 2017 Wifiprovn. Design & Develop HT Media</p>
+            </div>
+            <a href="#" class="scrollup" style="z-index: 100; display: inline;"></a>
+        </footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.submenu').parent('li').addClass('has-child');
+        })
+    </script>
+</body>
+</html>

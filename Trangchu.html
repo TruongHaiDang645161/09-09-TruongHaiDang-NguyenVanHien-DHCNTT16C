@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="../JS/js/Layoutmain.js"></script>
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+        .wrapper{
+        line-height: 1.5;
+        background-color: rgb(240,240,240);
+        width: 100%;
+        height: auto;
+        font-family: Arial, Helvetica, sans-serif;
+        }
+        header{
+            background-color: rgb(255,255,255);
+            width: 100%;
+            height: 65px;
+            display: flex;
+            justify-content:space-between;
+            align-items: center;
+        }
+        header a{
+          color: rgb(53, 105, 156);
+        }
+        nav{
+            background-color: rgb(53, 105, 156);
+            width: 100%;
+            height: 40px;
+            display: flex;
+            justify-content:space-between;
+            justify-content:center;
+            font-size: 15px;
+            margin-top: 5px;
+        }
+        .section{
+            font-family:'Open Sans',sans-serif;
+            font-size:14px;
+            color: #111;
+            line-height:1.15s; 
+            background-color: rgb(255,255,255);
+            width: 95%;
+            height: auto;
+            margin: auto;
+            display: flex;
+        }
+        .menu{
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .menu li a {
+            color:#f8f8f8;
+            font-weight: bold;
+            display: block;
+            padding:9px 30px;
+            text-decoration: none;
+        }
+        .menu li {
+            position: relative;
+            font-weight: bold;
+        }
+        .DMSP{
+            background-color:rgb(221,0,0);
+        }
+        .menu ul.submenu{
+            text-align: left;
+            position:absolute;
+            background-color:rgb(42, 113, 189);
+            padding-left: 0px;
+            list-style:none;
+            width: 200px;
+            display:none;
+        }
+        ul.menu li:hover ul.submenu{
+            display:block;
+        }
+        .menu ul.submenu a {
+            padding:5px 10px 10px 10px;
+            border-top: 1.5px solid white;
+            background-color: rgb(42, 113, 189);
+        }
+        .menu ul.submenu li:li :last-child a{
+            border: none;
+        }
+        .menu ul.submenu li:hover a {
+            border-bottom: rgb(57, 230, 22);
+            background-color: aqua;
+        }
+        .menu>li>a{
+            position: relative;
+        }
+        .menu>li>a:before{
+            content:"";
+            height:2px;
+            width: 0px;
+            background: white;
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            transition: 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+        .menu>li:hover>a:before{
+            width: 100%;
+        }
+        .menu>li.has-child::after{
+        font-family: "Font Awesome 5 Free"; 
+        font-weight: 900; 
+        content: "\f107";
+        color:rgba(255, 255, 255, 0.616);
+        position:absolute;
+        top: 0px;
+        right: 0px;
+        padding:18px 15px;
+        }
+        .header1{
+            color:blue;
+            font-size: 40px;
+            padding-right: 400px;
+            display:flex;
+        }
+        .header1 a { 
+            text-decoration: none; 
+            display: flex;
+        }
+        .container{
+            margin:0px auto;
+            max-width: 960px;
+        }
+        .div1{
+            margin:0px 10px;
+        }
+        .div1 a{
+            text-decoration:none;
+        }
+        .div1 a:hover{
+            color:rgb(22, 47, 137);
+        }
+        .div2{
+            padding-left: 100px;
+        }
+        .div2 a{
+            text-decoration:none;
+        }
+        .div2 a:hover{
+            color:rgb(22,47,137);
+        }
+        .div3{
+            padding: 0px;
+            padding-right: 150px;
+        }
+        .div3 a:hover{
+          background-color:rgb(22, 49, 137); 
+        }
+        .div4 a{
+            margin-right:100px;
+            text-decoration: none;
+        }
+        .box {
+            height:40px;
+            position:absolute;
+            left:35%;
+            background:#2f3640;
+            border-radius: 50px;
+            padding:5px;
+            margin-left: -120px;
+        }
+        .sbutton{
+            color:#e84118;
+            float:right;
+            width:40px;
+            height:40px;
+            border-radius: 50%;
+            background:#DADADA;
+            display: flex;
+            justify-content:center;
+            align-items:center;
+            text-decoration: none;
+            transition:3s;
+        }
+        .stext{
+            border:none;
+            background:none;
+            outline: none;
+            float:left;
+            padding: 0px;
+            color:white;
+            font-size:15px;
+            transition:1.5s;
+            line-height:40px;
+            width: 0px;
+        }
+        .sbox:hover > .stext{
+            width:200px;
+            padding: 0 5px;
+            border-radius: 50px;
+        }
+        .sbox:hover>.sbutton{
+            background:#fff;
+        }
+        .fa-search{
+            color: black;
+        }.sbutton{
+            color:#e84118;
+            float:right;
+            width:40px;
+            height:40px;
+            border-radius: 50%;
+            background:#DADADA;
+            display: flex;
+            justify-content:center;
+            align-items:center;
+            text-decoration: none;
+            transition:0.5s;
+        }
+        .stext{
+            border:none;
+            background:none;
+            outline: none;
+            float:left;
+            padding:0;
+            color:white;
+            font-size:15px;
+            transition:0.5s;
+            line-height:40px;
+            width:0px;
+        }
+        .sbox:hover > .stext{
+            width:200px;
+            padding: 0 5px;
+            border-radius: 50px;
+        }
+        .sbox:hover>.sbutton{
+            background:#fff;
+        }
+        .fa-search{
+            color: #001EFF;
+        }
+      
+        footer{
+            width: 100%;
+            height: 500px;
+        }
+        .footer1{
+            width: 100%;
+            height: 400px;
+            background-color: rgb(247,247,247);
+            padding-top: 20px;
+            font-size: 15px;
+        }
+        .f1{
+            width: 30%;
+            height: 400px;
+            float: left;
+            padding-left: 9%;
+            padding-right: 1.5%;
+        }
+        .f2{
+            width: 15%;
+            height: 400px;
+            float: left;
+            padding-left: 2%;
+            padding-right: 1%;
+        }
+        .f3{
+            width: 25.5%;
+            height: 400px;
+            float: left;
+            padding-left: 7%;
+            padding-right: 9%;
+            line-height: 1.1;
+        }
+        .footer2{
+            background-color: rgb(222,222,222);
+            width: 80%;
+            height: 90px;
+            text-align: center;
+            padding-top:10px;
+            font-size: 11px;
+            padding-left: 10%;
+            padding-right: 10%;
+            color: gray;
+        }
+        .footer{
+            text-decoration: none;
+            color: rgb(51, 115, 181);
+            line-height: 2;
+        }
+        .scrollup {
+            width: 40px;
+            height: 40px;
+            opacity: 0.3;
+            position: fixed;
+            bottom: 50px;
+            right: 35px;
+            display: none;
+            background: url(https://megacode.vn/themes/megacode/images/icon_top.png) no-repeat;
+            background-image: url(https://megacode.vn/themes/megacode/images/icon_top.png);
+            background-position-x: initial;
+            background-position-y: initial;
+            background-size: initial;
+            background-attachment: initial;
+            background-origin: initial;
+            background-clip: initial;
+            background-color: initial;
+        }
+        .image{
+            width: 45px;
+        }
+        .logo{
+            padding-left: 80px;
+        }
+        ul.submenu_1{
+            color: white;
+            text-align: left;
+            position:absolute;
+            background-color:rgb(42, 113, 189);
+            padding-left: 0px;
+            list-style:none;
+            width: 208.5px;
+            /*display:none;                                 Trang chủ không cần*/
+        }
+        ul.menu li:hover ul.submenu_1{
+            display:block;
+        }
+        .menu ul.submenu_1 a {
+            padding:5px 10px 10px 10px;
+            border-bottom: 1.5px solid white;
+            background-color: rgb(42, 113, 189);
+        }
+        .menu ul.submenu_1 li:li :last-child a{
+            border: none;
+        }
+        .menu ul.submenu_1 li:hover a {
+            border-top: rgb(57, 230, 22);
+            background-color: aqua;
+        }
+        /* .slider {
+            margin: 0px auto;
+            width: 60%;
+            height: 60%;
+            display:flex;
+            border: 1px solid #333;
+            position:relative;
+          }
+        .slide {
+            width: 100%;
+            flex-shrink: 0;
+            height: 70%;
+        } */
+          h2 {
+            text-align: center;
+          }
+          /* Slideshow container */
+        .slideshow-container {
+            position: relative;
+            margin-left: 22%;
+            width: 55%;
+            height: 417px;
+          }
+          /* Ẩn các slider */
+          .mySlides {
+              display: none;
+          }
+          /* Định dạng nội dung Caption */
+          .text {
+            color: #f2f2f2;
+            font-size: 15px;
+            padding: 8px 12px;
+            position: absolute;
+            bottom: 8px;
+            width: 100%;
+            text-align: center;
+          }
+
+          /* định dạng các chấm chuyển đổi các slide */
+        .dot {
+            cursor:pointer;
+            height: 13px;
+            width: 13px;
+            margin: 400px auto;
+            background-color: white;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+          }
+          /* khi được hover, active đổi màu nền */
+          .active, .dot:hover {
+            background-color: white;
+          }
+
+          /* Thêm hiệu ứng khi chuyển đổi các slide */
+          .fade {
+            -webkit-animation-name: fade;
+            -webkit-animation-duration: 3s;
+            animation-name: fade;
+            animation-duration: 3s;
+          }
+
+          @-webkit-keyframes fade {
+            from {opacity: .4} 
+            to {opacity: 1}
+          }
+
+          @keyframes fade {
+            from {opacity: .4} 
+            to {opacity: 1}
+          }
+        .sp-1 {
+            width: 300px;
+            height: auto;
+            margin: 20px 0 0 30px;
+            float: left;
+        }
+        .sp-1 h2{
+
+            
+            background-color: rgb(253,213,4);
+            padding-right:20px;
+
+        }
+        .sanpham{
+            width:95%;
+            height:auto;
+            margin:0 auto;
+            height: auto;
+            background-color:white;
+        }
+        .headline{
+            margin:40px 0px;
+            text-align: center;
+        }
+        .sanpham .headline h3 {
+            font-size:18px;
+            color: #111;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            border: 1px solid #bebebe;
+            display:inline-block;
+            color:#555;
+            font-weight:600;
+        }
+        .products-1{
+            list-style: none;
+            display:flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .products-1 li{
+            flex-basis: 25%;
+            padding-right:10px;
+            padding-left:10px;
+            box-sizing: border-box;
+            margin-bottom: 30px;
+        }
+        .product-top{
+            position: relative;
+            overflow: hidden;
+        }
+        .product-thumb{
+            display:block;
+        }
+        .product-thumb img{
+            
+            display: block;
+        }
+        .products-1 li img{
+            max-width: 100%;
+            height:auto;
+        }
+        .product-info{
+            padding:10px 0px;
+        }
+        .product-info a{
+            display:block;
+            text-decoration: none;
+        }
+        .product-cat{
+            font-size: 17px;
+            text-transform: uppercase;
+            color : #9e9e9e;
+            padding: 3px 0px;
+        }
+        .product-name{
+            color: #334862;
+            padding:3px 0px;
+        }
+        .product-price{
+            color: red;
+            padding: 2px 0px;
+            font-weight: 600;
+            font-size: 20px;
+        }
+        .buy-now{
+            text-transform:uppercase;
+            text-decoration: none;
+            text-align: center;
+            display: block;
+            background-color: #446084;
+            color: #fff;
+            padding:10px 0px;
+            position:absolute;
+            bottom: -41px;  
+            width:73%;
+            transition: 0.25s ease-in-out;
+            opacity:0.85;
+        }
+        li:hover a.buy-now{
+            bottom:0px;
+        }
+        li:hover .product-thumb img{
+            filter: opacity(80%);
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="header1 container"><a href="#"><img class="logo" src="https://www.wifiprovn.com/wp-content/uploads/2019/05/logo-wifiprovn.png" alt=""></a></div> 
+            <div class="box">
+                <form class="sbox" action="/search" method="get">
+                <input class="stext" type="text" name="q" placeholder="Tìm kiếm của bạn...">
+                <a class="sbutton" type="submit" href="javascript:void(0);">
+                <i class="fa fa-search"></i>
+                </a>
+                </form>
+            </div>
+            <div class="div1">
+                <a href="./Web/ThongtinSV.html" style="color: red;">Thông tin sinh viên</a>
+            </div>
+            <div class="div2">
+                <a href="#" class="container">Giỏ Hàng/0Đ</a>
+            </div>
+            <div class="div3">
+                <a href="#" class="container">
+                    <img class = "image" src="https://tse4.mm.bing.net/th?id=OIP.FkSnPghxO1kmMHCx--UgKQHaHa&pid=Api&P=0&w=169&h=169./GioHang.jpg" alt="">
+                </a>
+            </div>
+            <div class="div4">
+              <a href="./Web/DangnhapDangky.html">Đăng nhập/Đăng ký</a>
+            </div>
+        </header>
+        <nav>
+            <ul class="menu">
+                <li><a href="#" class="DMSP"> Danh Mục Sản Phẩm</a>
+                <ul class="submenu_1">
+                    <li><a href="#">Router/Switch</a></li>
+                    <li><a href="#">Wifi Gia Đình - MESH</a></li>
+                    <li><a href="#">WiFi access point</a></li>
+                    <li><a href="#">WiFi di động 4G 5G</a></li>
+                    <li><a href="#">Giải pháp camera</a></li>
+                    <li><a href="#">Thiết bị lưu trữ</a></li>
+                    <li><a href="#">Tường lửa - FireWall</a></li>
+                    <li><a href="#">Rujea</a></li>
+                    <li><a href="#">Aruba</a></li>
+                    <li><a href="#">CISCO</a></li>
+                </ul>
+                </li>
+                <li><a href="./Web/Trangchu.html">Trang Chủ</a></li>
+                <li><a href="./Web/Gioithieu.html">Giới Thiệu</a></li>
+                <li><a href="./Web/Baohanhdoitra.html">Chính Sách Bảo Hành & Đổi Trả</a></li>
+                <li><a href="./Web/Chinhsachbaomat.html">Chính Sách Bảo Mật</a></li>
+                <li><a href="./Web/Lienhe.html">Liên Hệ</a></li>
+                <li><a href="./Web/Tuvangiaiphap.html">Tư Vấn & Giải Pháp</a>
+                <ul class="submenu">
+                    <li><a href="./Web/Tuvangiaiphap1.html">Giải Pháp WiFi Doanh Nghiệp</a></li>
+                    <li><a href="./Web/Tuvangiaiphap2.html">Giải Pháp WiFi Dành Cho Doanh Nghiệp Vừa Nhỏ</a></li>
+                    <li><a href="./Web/Tuvangiaiphap3.html">WiFi Event-Sự Kiện</a></li>
+                </ul>
+                </li>
+            </ul>
+        </nav>
+        <div class="section">
+            <div class="slideshow-container">
+        
+                <div class="mySlides fade">
+                  <img src="./IMG/Hinh1.PNG" style="width:100%;height: 417px;">
+                  
+                </div>
+                <div class="mySlides fade">
+                    <img src="./IMG/Hinh2.PNG" style="width:100%;height: 417px;">
+                   
+                  </div>
+                  <div class="mySlides fade">
+                    <img src="./IMG/Hinh3.PNG" style="width:100%;height: 417px;">
+                  </div>
+                  <div class="mySlides fade">
+                    <img src="./IMG/Hinh4.PNG" style="width:100%;height: 417px;">
+                  </div>
+                  <div class="mySlides fade">
+                    <img src="./IMG/Hinh5.PNG" style="width:100%;height: 417px;">
+                  </div>
+              </div>
+              <br/>
+        
+            <div style="align-items:center;display: none;">
+                <span class="dot" onclick="currentSlide(0)"></span> 
+                <span class="dot" onclick="currentSlide(1)"></span> 
+                <span class="dot" onclick="currentSlide(2)"></span> 
+                <span class="dot" onclick="currentSlide(3)"></span> 
+                <span class="dot" onclick="currentSlide(4)"></span> 
+              </div> 
+            <div class="sp-1">
+              <h2>Sản Phẩm Khuyến Mại</h2>
+              <img style="width: 87px;height: 90px; padding-left: 10px;" src="./IMG/wf33.jpg" alt="">
+              <img style="width: 87px;height: 90px; padding-left: 50px;" src="./IMG/wf35.jpg" alt="">
+              <p>NETGEAR ORBI PRO SRK60 AC3000</p>
+              <a href="" style="text-decoration: none;"> <del> 5,790,000 ₫</del></a>
+              <a href="" style="color:red; text-decoration: none;"> 4,790,000 ₫</a>
+              <br/>
+              <img style="width: 87px;height: 102px; padding-left: 10px;" src="./IMG/wf34.jpg" alt="">
+              <img style="width: 87px;height: 90px; padding-left: 50px;" src="./IMG/wf37.jpg" alt="">
+             <p>TP-Link Archer AX73 Router Wi-Fi 6 Băng Tần Kép Gigabit AX5400</p>
+             <a href="" style="text-decoration: none;"> <del> 3,790,000 ₫</del></a>
+              <a href="" style="color:red; text-decoration: none;"> 2,790,000 ₫</a>
+            </div>
+            <p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+        </div>
+        <div class="sanpham">
+            <div class="headline">
+                <h3>sản phẩm bán chạy </h3>
+              </div>
+              <ul class="products-1">
+                <li>
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
+                        <img src="./IMG/wifi1.jpeg" alt="">
+                      </a>
+                      <a href="" class="buy-now">Mua ngay</a>
+                    </div>
+                    <div class="product-info">
+                      <a href="" class="product-name">
+                        Bộ phát WiFi 6 LINKSYS MR7340 – 7310 VELOP MESH AX1500
+                      </a>
+                      <a href="" class="product-cat" style="text-decoration: none; display:block;">
+                        <del>3,390,000 ₫</del>
+                      </a>
+                      <div class="product-price">
+                        1,990,000 ₫
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+
+
+
+                <li>
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
+                        <img style="width:200px;height:200px;" src="./IMG/wifi2.jpg" alt="">
+                      </a>
+                      <a href="" class="buy-now">Mua ngay</a>
+                      <!-- /*mua ngay*/ -->
+                    </div>
+                    <div class="product-info">
+        
+                      <a href="" class="product-name">
+                        Thiết bị phát mạng Wifi-6 RUIJIE [ RG-EW1800GX PRO ] không dây băng tần kép Gigabit Công Nghệ Reyee Mesh
+                      </a>
+                      <a href="" class="product-cat">
+                        <del>1,990,000 ₫</del>
+                      </a>
+                      <div class="product-price">
+                        1,790,000 ₫
+                      </div>
+                    </div>
+                  </div>
+                </li>
+          
+          
+          
+                <li>
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
+                        <img style="width:200px;height:200px;" src="./IMG/wifi3.png" alt="">
+                      </a>
+                      <a href="" class="buy-now">Mua ngay</a>
+                      <!-- /*mua ngay*/ -->
+                    </div>
+                    <div class="product-info">
+                     
+                      <a href="" class="product-name">
+                        16 cổng Gigabit JetStream TpLink [ TL-SG116 ] để bàn Switch không quản lý
+                      </a>
+                      <a href="" class="product-cat">
+                        <del>1,990,000 ₫</del>
+                      </a>
+                      <div class="product-price">
+                        5,060,000 ₫
+                      </div>
+                    </div>
+                  </div>
+                </li>
+          
+          
+                <li>
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
+                        <img style="width:200px;height:200px;" src="./IMG/wifi4.jpg" alt="">
+                      </a>
+                      <a href="" class="buy-now">Mua ngay</a>
+                      <!-- /*mua ngay*/ -->
+                    </div>
+                    <div class="product-info">
+                     
+                      <a href="" class="product-name">
+                        NETGEAR X4S R7800 AC2600
+                      </a>
+                      <a href="" class="product-cat">
+                        <del>2,990,000 ₫</del>
+                      </a>
+                      <div class="product-price">
+                        1,790,000 ₫
+                      </div>
+                    </div>
+                  </div>
+                </li>
+          
+          
+          
+                <li>
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
+                        <img style="width:200px;height:200px;" src="./IMG/wif5.jpg" alt="">
+                      </a>
+                      <a href="" class="buy-now">Mua ngay</a>
+                      <!-- /*mua ngay*/ -->
+                    </div>
+                    <div class="product-info">
+                      
+                      <a href="" class="product-name">
+                        Bộ Phát WiFI Linksys EA9500S Max-Stream 5400 Mu-MiMo Gigabit Router
+                      </a>
+                      <a href="" class="product-cat">
+                        <del>3,990,000 ₫</del>
+                      </a>
+                      <div class="product-price">
+                        2,790,000 ₫
+                      </div>
+                    </div>
+                  </div>
+                </li>
+          
+          
+                <li>
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
+                        <img style="width:200px;height:200px;" src="./IMG/wifi6.png" alt="">
+                      </a>
+                      <a href="" class="buy-now">Mua ngay</a>
+                      <!-- /*mua ngay*/ -->
+                    </div>
+                    <div class="product-info">
+                      
+                      <a href="" class="product-name">
+                        Thiết bị Wifi Accesspoint Grandstream GWN7630LR chính hãng
+                      </a>
+                      <a href="" class="product-cat">
+                        <del>4,990,000 ₫</del>
+                      </a>
+                      <div class="product-price">
+                        3,790,000 ₫
+                      </div>
+                    </div>
+                  </div>
+                </li>
+          
+          
+                <li>
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
+                        <img style="width:200px;height:200px;" src="./IMG/wifi7.jpg" alt="">
+                      </a>
+                      <!-- /*mua ngay*/ -->
+                      <a href="" class="buy-now">Mua ngay</a>
+                    </div>
+                    <div class="product-info">
+                      
+                      <a href="" class="product-name">
+                        WIFI ACCESS POINT GRANDSTREAM GWN7605LR
+                      </a>
+                      <a href="" class="product-cat">
+                        <del>5,990,000 ₫</del>
+                      </a>
+                      <div class="product-price">
+                        4,790,000 ₫
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
+                        <img style="width:200px;height:200px;" src="./IMG/wifi88.jpg" alt="">
+                      </a>
+                      <a href="" class="buy-now">Mua ngay</a>
+                      <!-- /*mua ngay*/ -->
+                    </div>
+                    <div class="product-info">
+                      
+                      <a href="" class="product-name">
+                        WIFI ACCESS POINT GRANDSTREAM GWN7600
+                      </a>
+                      <a href="" class="product-cat">
+                        <del>2,990,000 ₫</del>
+                      </a>
+                      <div class="product-price">
+                        1,790,000 ₫
+                      </div>
+                    </div>
+                  </div>
+                </li>
+          
+                <li>
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
+                        <img style="width:200px;height:200px;" src="./IMG/wifi9.jpg" alt="">
+                      </a>
+                      <a href="" class="buy-now">Mua ngay</a>
+                      <!-- /*mua ngay*/ -->
+                    </div>
+                    <div class="product-info">
+                      
+                      <a href="" class="product-name">
+                        WIFI ACCESS POINT GRANDSTREAM GWN7610
+                      </a>
+                      <a href="" class="product-cat">
+                        <del>7,990,000 ₫</del>
+                      </a>
+                      <div class="product-price">
+                        5,790,000 ₫
+                      </div>
+                    </div>
+                  </div>
+                </li>
+          
+                <li>
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
+                        <img style="width:200px;height:200px;" src="./IMG/wifi10.jpg" alt="">
+                      </a>
+                      <a href="" class="buy-now">Mua ngay</a>
+                      <!-- /*mua ngay*/ -->
+                    </div>
+                    <div class="product-info">
+                     
+                      <a href="" class="product-name">
+                        Bộ phát WiFi Mesh Google Wifi – Pack 3 AC1200 (New Vesion)
+                      </a>
+                      <a href="" class="product-cat">
+                        <del>9,990,000 ₫</del>
+                      </a>
+                      <div class="product-price">
+                        8,790,000 ₫
+                      </div>
+                    </div>
+                  </div>
+                </li>
+          
+          
+                <li>
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
+                        <img style="width:200px;height:200px;" src="./IMG/wifi11.jpg" alt="">
+                      </a>
+                      <a href="" class="buy-now">Mua ngay</a>
+                      <!-- /*mua ngay*/ -->
+                    </div>
+                    <div class="product-info">
+                      
+                      <a href="" class="product-name">
+                        GAMING ROUTER ASUS RT-AX82U WIFI 6
+                      </a>
+                      <a href="" class="product-cat">
+                        <del>4,990,000 ₫</del>
+                      </a>
+                      <div class="product-price">
+                        3,790,000 ₫
+                      </div>
+                    </div>
+                  </div>
+                </li>
+          
+          
+                <li>
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
+                        <img style="width:200px;height:200px;" src="./IMG/wifi12-pro.png" alt="">
+                      </a>
+                      <a href="" class="buy-now">Mua ngay</a>
+                      <!-- /*mua ngay*/ -->
+                    </div>
+                    <div class="product-info">
+                      
+                      <a href="" class="product-name">
+                        ASUS WIRELESS RP-N12 – ROUTER WIFI
+                      </a>
+                      <a href="" class="product-cat">
+                        <del>2,990,000 ₫</del>
+                      </a>
+                      <div class="product-price">
+                        1,790,000 ₫
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
+                        <img style="width:200px;height:200px;" src="./IMG/wifi13.jpeg" alt="">
+                      </a>
+                      <a href="" class="buy-now">Mua ngay</a>
+                      <!-- /*mua ngay*/ -->
+                    </div>
+                    <div class="product-info">
+                      
+                      <a href="" class="product-name">
+                        ASUS RT-AC5300
+                      </a>
+                      <a href="" class="product-cat">
+                        <del>8,990,000 ₫</del>
+                      </a>
+                      <div class="product-price">
+                        7,790,000 ₫
+                      </div>
+                    </div>
+                  </div>
+                </li>  
+
+
+                <li>
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
+                        <img style="width:200px;height:200px;" src="./IMG/wifi14.jpeg" alt="">
+                      </a>
+                      <a href="" class="buy-now">Mua ngay</a>
+                      <!-- /*mua ngay*/ -->
+                    </div>
+                    <div class="product-info">
+                      
+                      <a href="" class="product-name">
+                        Thiết bị phát mạng Wifi-6 RUIJIE [ RG-EW1800GX PRO ] không dây băng tần kép Gigabit Công Nghệ Reyee Mesh
+                      </a>
+                      <a href="" class="product-cat">
+                        <del>9,990,000 ₫</del>
+                      </a>
+                      <div class="product-price">
+                        8,790,000 ₫
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+
+                <li>
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
+                        <img style="width:200px;height:200px;" src="./IMG/wifi15.jpg" alt="">
+                      </a>
+                      <a href="" class="buy-now">Mua ngay</a>
+                      <!-- /*mua ngay*/ -->
+                    </div>
+                    <div class="product-info">
+                      
+                      <a href="" class="product-name">
+                        Access Point Wifi Indoor | RUIJIE RG-AP840-I | Tốc độ cao 5.2Gbps | Chuẩn 802.11a/b/g/n/ac và 802.11ax
+                      </a>
+                      <a href="" class="product-cat">
+                        <del>1,990,000 ₫</del>
+                      </a>
+                      <div class="product-price">
+                        790,000 ₫
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                  
+
+                <li>
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
+                        <img style="width:200px;height:200px;" src="./IMG/wifi16.jpg" alt="">
+                      </a>
+                      <a href="" class="buy-now">Mua ngay</a>
+                      <!-- /*mua ngay*/ -->
+                    </div>
+                    <div class="product-info">
+                      
+                      <a href="" class="product-name">
+                        UniFi AC Mesh PRO
+                      </a>
+                      <a href="" class="product-cat">
+                        <del>1,990,000 ₫</del>
+                      </a>
+                      <div class="product-price">
+                        1,790,000 ₫
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+
+
+                <li>
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
+                        <img style="width:200px;height:200px;" src="./IMG/wifi17.jpg" alt="">
+                      </a>
+                      <a href="" class="buy-now">Mua ngay</a>
+                      <!-- /*mua ngay*/ -->
+                    </div>
+                    <div class="product-info">
+                      
+                      <a href="" class="product-name">
+                        NETGEAR ORBI PRO SRK60 AC3000
+                      </a>
+                      <a href="" class="product-cat">
+                        <del>1,990,000 ₫</del>
+                      </a>
+                      <div class="product-price">
+                        790,000 ₫
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+
+                <li>
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
+                        <img style="width:200px;height:200px;" src="./IMG/wifi18.jpg" alt="">
+                      </a>
+                      <a href="" class="buy-now">Mua ngay</a>
+                      <!-- /*mua ngay*/ -->
+                    </div>
+                    <div class="product-info">
+                      
+                      <a href="" class="product-name">
+                        LINKSYS VELOP TRI-BAND 3-Pack (AC4600) VLP0203
+                      </a>
+                      <a href="" class="product-cat">
+                        <del>1,990,000 ₫</del>
+                      </a>
+                      <div class="product-price">
+                        1,790,000 ₫
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+
+                <li>
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
+                        <img style="width:200px;height:200px;" src="./IMG/wifi19.jpg" alt="">
+                      </a>
+                      <a href="" class="buy-now">Mua ngay</a>
+                      <!-- /*mua ngay*/ -->
+                    </div>
+                    <div class="product-info">
+                      
+                      <a href="" class="product-name">
+                        MESH WIFI LINKSYS VELOP DUAL-BAND WHW0103 3-Pack (AC3900)
+                      </a>
+                      <a href="" class="product-cat">
+                        <del>1,990,000 ₫</del>
+                      </a>
+                      <div class="product-price">
+                        790,000 ₫
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+
+                <li>
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
+                        <img style="width:200px;height:200px;" src="./IMG/wifi20.jpg" alt="">
+                      </a>
+                      <a href="" class="buy-now">Mua ngay</a>
+                      <!-- /*mua ngay*/ -->
+                    </div>
+                    <div class="product-info">
+                      
+                      <a href="" class="product-name">
+                        LINKSYS VELOP DUAL-BAND 3-Pack (AC3700)
+                      </a>
+                      <a href="" class="product-cat">
+                        <del>4,990,000 ₫</del>
+                      </a>
+                      <div class="product-price">
+                        3,790,000 ₫
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                
+
+                <li>
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
+                        <img style="width:200px;height:200px;" src="./IMG/wifi21.jpg" alt="">
+                      </a>
+                      <a href="" class="buy-now">Mua ngay</a>
+                      <!-- /*mua ngay*/ -->
+                    </div>
+                    <div class="product-info">
+                      
+                      <a href="" class="product-name">
+                        BỘ PHÁT 4G NETGEAR NIGHTHAWK M2 (MR2100), phát WIFI di động, tốc độ cực cao
+                      </a>
+                      <a href="" class="product-cat">
+                        <del>6,990,000 ₫</del>
+                      </a>
+                      <div class="product-price">
+                        5,790,000 ₫
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+
+                <li>
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
+                        <img style="width:200px;height:200px;" src="./IMG/wifi22.jpg" alt="">
+                      </a>
+                      <a href="" class="buy-now">Mua ngay</a>
+                      <!-- /*mua ngay*/ -->
+                    </div>
+                    <div class="product-info">
+                      
+                      <a href="" class="product-name">
+                        Bộ Phát Wifi 4G Netgear Nighthawk M1 MR1100
+                      </a>
+                      <a href="" class="product-cat">
+                        <del>8,990,000 ₫</del>
+                      </a>
+                      <div class="product-price">
+                        3,790,000 ₫
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+
+                <li>
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
+                        <img style="width:200px;height:200px;" src="./IMG/wifi23.jpg" alt="">
+                      </a>
+                      <a href="" class="buy-now">Mua ngay</a>
+                      <!-- /*mua ngay*/ -->
+                    </div>
+                    <div class="product-info">
+                      
+                      <a href="" class="product-name">
+                        Bộ phát Wifi 4G Netgear Aircard ac800S chuẩn 4G Cat9 tốc độ 450Mbps. Hỗ trợ 15 thiết bị
+                      </a>
+                      <a href="" class="product-cat">
+                        <del>3,990,000 ₫</del>
+                      </a>
+                      <div class="product-price">
+                        2,790,000 ₫
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+
+                <li>
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
+                        <img style="width:200px;height:200px;" src="./IMG/wifi24.jpg" alt="">
+                      </a>
+                      <a href="" class="buy-now">Mua ngay</a>
+                      <!-- /*mua ngay*/ -->
+                    </div>
+                    <div class="product-info">
+                      
+                      <a href="" class="product-name">
+                        Thiết bị Phát WiFi 4G JIO JMR1040, tốc độ 150Mbps, Pin 8-10 tiếng liên tục
+                      </a>
+                      <a href="" class="product-cat">
+                        <del>1,790,000 ₫</del>
+                      </a>
+                      <div class="product-price">
+                        1,790,000 ₫
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+
+                <li>
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
+                        <img style="width:200px;height:200px;" src="./IMG/wifi25.jpg" alt="">
+                      </a>
+                      <a href="" class="buy-now">Mua ngay</a>
+                      <!-- /*mua ngay*/ -->
+                    </div>
+                    <div class="product-info">
+                      
+                      <a href="" class="product-name">
+                        Thiết bị phát Wifi 4G OLAX MF980L 150Mbps Hotspot Mifis, màn hình LCD, Pin 2100 MAh
+                      </a>
+                      <a href="" class="product-cat">
+                        <del>6,990,000 ₫</del>
+                      </a>
+                      <div class="product-price">
+                        5,790,000 ₫
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+
+                <li>
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
+                        <img style="width:200px;height:200px;" src="./IMG/wifi26.jpg" alt="">
+                      </a>
+                      <a href="" class="buy-now">Mua ngay</a>
+                      <!-- /*mua ngay*/ -->
+                    </div>
+                    <div class="product-info">
+                      
+                      <a href="" class="product-name">
+                        Thiết bị phát wifi 4G Reliance Jio M2S, tốc độ 150mbps. Pin sử dung lên 6 giờ
+                      </a>
+                      <a href="" class="product-cat">
+                        <del>5,990,000 ₫</del>
+                      </a>
+                      <div class="product-price">
+                        4,790,000 ₫
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+
+                <li>
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
+                        <img style="width:200px;height:200px;" src="./IMG/wifi27.jpeg" alt="">
+                      </a>
+                      <a href="" class="buy-now">Mua ngay</a>
+                      <!-- /*mua ngay*/ -->
+                    </div>
+                    <div class="product-info">
+                      
+                      <a href="" class="product-name">
+                        Thiết bị Phát WiFi 5G Netgear MR5200 (Netgear M5) Cat 20, pin 11 tiếng, thiết bị cao cấp
+                      </a>
+                      <a href="" class="product-cat">
+                        <del>7,990,000 ₫</del>
+                      </a>
+                      <div class="product-price">
+                        6,790,000 ₫
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+
+                <li>
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
+                        <img style="width:200px;height:200px;" src="./IMG/wifi28.jpg" alt="">
+                      </a>
+                      <a href="" class="buy-now">Mua ngay</a>
+                      <!-- /*mua ngay*/ -->
+                    </div>
+                    <div class="product-info">
+                      
+                      <a href="" class="product-name">
+                        Thiết bị WiFi 3G/4G Huawei E5331, tốc Độ 100Mbps, Pin sử dụng lên đến 5 giờ
+                      </a>
+                      <a href="" class="product-cat">
+                        <del>2,990,000 ₫</del>
+                      </a>
+                      <div class="product-price">
+                        1,790,000 ₫
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+
+                <li>
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
+                        <img style="width:200px;height:200px;" src="./IMG/wifi29.jpg" alt="">
+                      </a>
+                      <a href="" class="buy-now">Mua ngay</a>
+                      <!-- /*mua ngay*/ -->
+                    </div>
+                    <div class="product-info">
+                      
+                      <a href="" class="product-name">
+                        Thiết bị WiFi 4G Huawei E5576-855 tốc độ 150Mbps. Pin sử dụng liên tục đến 6 giờ
+                      </a>
+                      <a href="" class="product-cat">
+                        <del>3,990,000 ₫</del>
+                      </a>
+                      <div class="product-price">
+                        2,790,000 ₫
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+
+                <li>
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
+                        <img style="width:200px;height:200px;" src="./IMG/wifi30.jpg" alt="">
+                      </a>
+                      <a href="" class="buy-now">Mua ngay</a>
+                      <!-- /*mua ngay*/ -->
+                    </div>
+                    <div class="product-info">
+                      
+                      <a href="" class="product-name">
+                        Thiết bị phát WiFi Router 4G Tp-link MR6400 tốc độ 300Mbps
+                      </a>
+                      <a href="" class="product-cat">
+                        <del>2,990,000 ₫</del>
+                      </a>
+                      <div class="product-price">
+                        1,790,000 ₫
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+
+                <li>
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
+                        <img style="width:200px;height:200px;" src="./IMG/wifi31.jpg" alt="">
+                      </a>
+                      <a href="" class="buy-now">Mua ngay</a>
+                      <!-- /*mua ngay*/ -->
+                    </div>
+                    <div class="product-info">
+                      
+                      <a href="" class="product-name">
+                        RIVERBED Xirrus Access Point XR-620
+                      </a>
+                      <a href="" class="product-cat">
+                        <del>5,990,000 ₫</del>
+                      </a>
+                      <div class="product-price">
+                        4,790,000 ₫
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+
+
+                <li>
+                  <div class="product-item">
+                    <div class="product-top">
+                      <a href="" class="product-thumb">
+                        <img style="width:200px;height:200px;" src="./IMG/wifi32.jpg" alt="">
+                      </a>
+                      <a href="" class="buy-now">Mua ngay</a>
+                      <!-- /*mua ngay*/ -->
+                    </div>
+                    <div class="product-info">
+                      
+                      <a href="" class="product-name">
+                        TP-LINK EAP225 MU-MIMO AC1350
+                      </a>
+                      <a href="" class="product-cat">
+                        <del>1,990,000 ₫</del>
+                      </a>
+                      <div class="product-price">
+                        1,790,000 ₫
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+
+
+              </ul>
+        </div>
+        <footer>
+            <div class="footer1">
+                <div class="f1">
+                    <h3 style="font-weight: lighter; font-size: 20px; color: rgb(22, 47, 137);">GIỚI THIỆU WIFIPROVN.COM</h3>
+                    <p>Ngôi nhà, văn phòng cũng như nơi kinh doanh tuyệt đẹp của bạn với hàng loạt thiết bị hiện đại không thể thiếu đi phần quan trọng là hệ thống WIFI đủ mạnh và tin cậy để bạn có thể kết nối bất kỳ lúc nào.</p>
+                    <p><b>Wifiprovn.com</b> chuyên tư vấn về các hệ thống, thiết bị WIFI chất lượng cao dành cho gia đình và kinh doanh. Thiết bị được nhập từ US với chất lượng cao từ các thương hiệu nổi tiếng như NETGEAR, LINKSYS, ASUS... Đảm bảo mọi người sẽ tìm được giải pháp kết nối không dây cho gia đình với chất lượng tốt nhất.</p>
+                    <a href="http://online.gov.vn/Home/WebDetails/48672?AspxAutoDetectCookieSupport=1" target="blank"><img src="https://www.wifiprovn.com/wp-content/uploads/2020/01/logoSaleNoti.png" style="max-height: 75px;"></a>
+                </div>
+                <div class="f2">
+                    <h3 style="font-weight: lighter; font-size: 20px; color: rgb(22, 49, 137);">ĐIỀU HƯỚNG</h3>
+                    <a href="">Chính sách vận chuyển</a><br>
+                    <a href="">Hướng dẫn mua hàng từ xa</a><br>
+                    <a href="">Hướng dẫn thanh toán</a><br>
+                    <a href="">Chính sách bảo mật</a><br>
+                    <a href="">Chính sách bảo hành</a><br>
+                    <a href="">Hướng dẫn mua hàng trả góp</a><br>
+                </div>
+                <div class="f3">
+                    <h3 style="font-weight: lighter; font-size: 20px; color: rgb(22, 49, 137);">THÔNG TIN LIÊN HỆ</h3>
+                    <p><b>Kho 1:</b> 127 Trần Minh Quyền, P.10, Q.10, TP.HCM</p>
+                    <p><b>Kho 2:</b> A2-10-05 Chung cư OPAL RIVERSIDE, đường số 10, Hiệp Bình Chánh, Q.Thủ Đức, TP.HCM</p>
+                    <p><b>Email:</b> infor@wifiprovn.com</p>
+                    <p><b>Mr Tâm:</b> 0988.839.800</p>
+                    <p><b>Mr Thiện:</b> 038.294.5588</p>
+                        <ul>
+                            <li><a href="https://www.facebook.com/wifitek" target="blank">Theo dõi trang Facebook</a></li>
+                            <li><a href="mailto:infor@wifiprovn.com" target="blank">Gửi Email cho chúng tôi</a></li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+            <div class="footer2">
+                <p>CÔNG TY TNHH THƯƠNG MẠI – DỊCH VỤ CÔNG NGHỆ MIS. Giấy chứng nhận số: 0314838811. Ngày cấp: 16/01/2018. Nơi cấp: Sở Kế hoạch và Đầu tư TP.Hồ Chí Minh. Địa chỉ: 176/19/6B Quốc Lộ 13 cũ, Phường Hiệp Bình Phước, Quận Thủ Đức, TP. Hồ Chí Minh. Số điện thoại: 0988.839.800. Email: infor@wifiprovn.com.</p>
+                <p>© 2017 Wifiprovn. Design & Develop HT Media</p>
+            </div>
+            <a href="#" class="scrollup" style="z-index: 100; display: inline;"></a>
+        </footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.submenu').parent('li').addClass('has-child');
+        })
+    </script>
+</body>
+<script>
+    //khai báo biến slideIndex đại diện cho slide hiện tại
+    var slideIndex;
+    // KHai bào hàm hiển thị slide
+    function showSlides() {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        for (i = 0; i < slides.length; i++) {
+           slides[i].style.display = "none";  
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+
+        slides[slideIndex].style.display = "block";  
+        dots[slideIndex].className += " active";
+        //chuyển đến slide tiếp theo
+        slideIndex++;
+        //nếu đang ở slide cuối cùng thì chuyển về slide đầu
+        if (slideIndex > slides.length - 1) {
+          slideIndex = 0
+        }    
+        //tự động chuyển đổi slide sau 5s
+        setTimeout(showSlides, 5000);
+    }
+    //mặc định hiển thị slide đầu tiên 
+    showSlides(slideIndex = 0);
+
+
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+  </script>
+</html>
